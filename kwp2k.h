@@ -1,9 +1,9 @@
 #ifndef KWP2K_DEFINE_H
 #define KWP2K_DEFINE_H
 
-#define NR 0x7F //NegativeResponse Service Id
+#define SI_NR 0x7F //NegativeResponse Service Id
 
-//Definition of Response COde
+//Definition of Response Code
 //	RC_RBD 0x00 ReservedByDocument
 #define RC_GR 0x10 //GeneralReject
 #define RC_SNS 0x11 //ServiceNotSupported
@@ -161,9 +161,11 @@
 //	SB_UFI_VMS 0x80 - 0xFF Vehicle manufacturer specific
 
 //Diagnostic Management
+
 //StartDiagnosticSession service
-#define DM_STDS 0x10 //StartDiagnosticSession Request Service Id
-#define DM_STDSPR 0x50 //StartDiagnosticSession Positive Response Service Id
+#define SI_STDS 0x10 //StartDiagnosticSession Request Service Id
+#define SI_STDSPR 0x50 //StartDiagnosticSession Positive Response Service Id
+
 //Diagnostic Session
 //	DCS_RBD 0x00 - 0x80 ReservedByDocument
 #define DCS_SS 0x81 //StandartSession
@@ -179,11 +181,13 @@
 //SecurityAccesss service not Defined
 
 //TesterPresent Service
-#define DM_TP 0x3E //TesterPresent Reques Service Id
-#define DM_TPPR 0x7E //testerPresent Positive Response Service Id
+#define SI_TP 0x3E //TesterPresent Request Service Id
+#define SI_TPPR 0x7E //testerPresent Positive Response Service Id
+
 //EcuReset service
-#define DM_ER 0x11 //ecuReset Request Service Id
-#define DM_ERPR 0x51 //ecuReset Positive Response Service Id
+#define SI_ER 0x11 //ecuReset Request Service Id
+#define SI_ERPR 0x51 //ecuReset Positive Response Service Id
+
 //EcuReset service
 //Parameter definition
 //      RM_RBD 0x00 reservedByDocument
@@ -233,8 +237,9 @@
 //Data Transmission functional unit
 
 //ReadDataByLocalIdentifier service
-#define DT_RDBLI 0x21 //readDataByLocalIdentifier Request Service Id
-#define DT_RDBLIPR 0x61 //readDataByLocalIdentifier Positive Response Service Id
+#define SI_RDBLI 0x21 //readDataByLocalIdentifier Request Service Id
+#define SI_RDBLIPR 0x61 //readDataByLocalIdentifier Positive Response Service Id
+
 //ReadDataByLocalIdentifier service
 //Parameter definition
 //      RLI_RBD 0x00 reservedByDocument
@@ -245,8 +250,9 @@
 //      RLI_RBD 0xFF reservedByDocument
 
 //ReadDataByCommonIdentifier service
-#define DT_RDBCI 0x22 //readDataByCommonIdentifier Request Service Id
-#define DT_RDBCIPR 0x62 //readDataByCommonIdentifier Positive Response Service Id
+#define SI_RDBCI 0x22 //readDataByCommonIdentifier Request Service Id
+#define SI_RDBCIPR 0x62 //readDataByCommonIdentifier Positive Response Service Id
+
 //ReadDataByCommonIdentifier service
 //Parameter definition
 //      DCI_RBD reservedByDocument
@@ -258,16 +264,105 @@
 //      RCI_RBD 0xFFFF reservedByDocument
 
 //ReadMemoryByAddress service
-#define DT_RMBA 0x23 //readMemoryByAddress Request
-#define DT_RMBAPR 0x63 //readMemoryByAddress Positive Response
+#define SI_RMBA 0x23 //readMemoryByAddress Request
+#define SI_RMBAPR 0x63 //readMemoryByAddress Positive Response
 
 //DynamicallyDefineLocalIdentifier service
-#define DT_DDLI 0x2C //dynamicallyDefineLocalIdentifier Request Service Id
-#define DT_DDLIPR 0x6C //dynamicallyDefineLocalIdentifier Positive Response SId
+#define SI_DDLI 0x2C //dynamicallyDefineLocalIdentifier Request Service Id
+#define SI_DDLIPR 0x6C //dynamicallyDefineLocalIdentifier Positive Response SId
+
 //DynamicallyDefineLocalIdentifier service
 //Parameter definition
-//      DDDLI_RBD reservedByDocument
-#define DDDLI_DBLI defineByLocalIdentifier
+//      DNM_RBD reservedByDocument
+#define DNM_DBLI 0x01 defineByLocalIdentifier
+#define DNM_DBCI 0x02 defineByCommonIdentifier
+#define DNM_DBMA 0x03 defineByMemoryAddress
+#define DNM_CDDDLI 0x04 clearDynamicallyDefinedLocalIdentifier
+//      DNM_RBD 0x05 - 0x7F reservedByDocument
+//      DNM_VMS 0x80 vehicleManufacturerSpecific
+#define DNM_DBIOLI 0x81 defineByInputOutputLocalIdentifier
+#define DNM_DBIOCI 0x82 defineByInputOutputCommonIdentifier
+//      DNM_VMS 0x83 - 0xF9 vehicleManufacturerSpecific
+//      DNM_SSS 0xFA - 0xFE systemSupplierSpecific
+//      DNM_RBD 0xFF reservedByDocument
+
+//WriteDataByLocalIdentifier service
+#define SI_WDBLI 0x3B //writeDataByLocalIdentifier Request Service Id
+#define SI_WDBLIPR 0x7B //writeDataByLocalIdentifier Positive Response Service Id
+
+
+//WriteDataByCommonIdentifier service
+#define SI_WDBCI 0x2E //writeDataByCommonIdentifier Request Service Id
+#define SI_WDBCIPR 0x6E //writeDataByCommonIdentifier Positive Response Service Id
+
+//WriteMemoryByAddress service
+#define SI_WMBA 0x3D //writeMemoryByAddress Request Service Id
+#define SI_WMBAPR 0x7D //writeMemoryByAddress Positive Response Service Id
+
+//Stored Data Transmission functional unit
+
+//ReadDiagnosticTroubleCodes service
+
+//ReadDiagnosticTroubleCodesByStatus service
+#define SI_RDTCBS 0x18 //readDiagnosticTroubleCodesByStatus Request SId
+#define SI_RDTCBSPR 0x58 //readDiagnosticTroubleCodesByStatus Pos. Response SId
+
+//ReadDiagnosticTroubleCodesByStatus service
+//Request parameter definition
+//      SODTCRQ_RBD 0x00 - 0x01 reservedByDocument
+#define SODTCRQ_RSDTCAS 0x02 //requestStoredDTCAndStatus
+#define SODTCRQ_RADTCAS 0x03 //requestAllDTCAndStatus
+//      SODTCRQ_RBD 0x04 - 0x10 reservedByDocument
+#define SODTCRQ_RPDTCAS 0x11 //requestPendingDTCAndStatus
+//      SODTCRQ_RBD 0x12 - 0xEF reservedByDocument
+//      SODTCRQ_VMS 0xF0 - 0xF9 vehicleManufacturerSpecific
+//      SODTCRQ_SSS 0xFA - 0xFE systemSupplierSpecific
+#define SODTCRQ_RSBS 0xFF //requestStatusBitsSupported
+
+//      GODTC_SDTC 0x0000 - 0xFFFE specificDTC
+#define GODTC_ADTC 0xFFFF //allDTCs
+
+#define SODTC_PFP (1<<0) //pendingFaultPresent      '0' = pending fault is not present
+//                                                  '1' = pending fault is present
+
+#define SODTC_PFS (1<<1) //pendingFaultState        '0' = pending fault has not been present during this driving cycle
+//                                                  '1' = pending fault has been present during this driving cycle
+
+#define SODTC_TRU (1<<2) //testRunning              '0' = test is not running
+//                                                  '1' = test is running
+
+#define SODRC_TI (1<<3) //testInhibit               '0' = test is not inhibited by other DTC
+//                                                  '1' = test is inhibited by other DTC
+
+#define SODRC_TRE (1<<4) //testReadiness            '0' = test has been completed
+//                                                  '1' = test has not been completed
+
+#define SODRC_DTCSS (1<<5) //DTCStorageState        ‘0’ = DTC not validated and not stored in non volatile memory
+//                                                  ‘1’ = DTC validated and stored in non volatile memory.
+
+#define SODRC_VFP (1<<6) //validatedFaultPresent    ‘0’ = no validated fault present or fault has been validated as not present at time of request.
+//                                                  ‘1’ = validated fault present at time of request.
+
+#define SODRC_VFS (1<<7) //validatedFaultState      '0' = validated fault has not been present during this driving cycle
+//                                                  '1' = validated fault has been present during this driving cycle
+
+//ReadStatusOfDiagnosticTroubleCodes service
+#define SI_RSODTC 0x17 //readStatusOfDiagnosticTroubleCodes Request SId
+#define SI_RSODTCPR 0x57 //readStatusOfDiagnosticTroubleCodes Positive Response SId
+
+//ReadFreezeFrameData service
+#define SI_RFFD 0x12 //readFreezeFrameData Request Service Id
+#define SI_RFFDPR 0x52 //readFreezeFrameData Positive Response Service Id
+
+//ReadFreezeFrameData service
+//Parameter definition
+#define FFNR_OFFDR 0x00 //OBDIIFreezeFrame
+//      FFNR_FFDR 0x01 - 0xFE freezeFrame
+#define FFNR_AFFDR 0xFF //allFreezeFrames
+
+#define RAMI_RAD 0x00 //requestAllData
+#define RAMI_RBRLI 0x01 //requestByRecordLocalIdentifier
+#define RAMI_RBRCI 0x02 //requestByRecordCommonIdentifier
 
 
 #endif /* KWP2K_DEFINE_H */
