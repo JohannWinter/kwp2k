@@ -363,6 +363,84 @@
 #define RAMI_RAD 0x00 //requestAllData
 #define RAMI_RBRLI 0x01 //requestByRecordLocalIdentifier
 #define RAMI_RBRCI 0x02 //requestByRecordCommonIdentifier
+#define RAMI_RBMA 0x03 //requestByMemoryAddress
+#define RAMI_RBDTC 0x04 //requestByDTC
+//      RAMI_RBD 0x05 - 0x7F reservedByDocument
+#define RAMI_DTCTCFFS 0x80 //DTCThatCausedFreezeFrameStorage
+#define RAMI_RBIOLI 0x81 //requestByInputOutputLocalIdentifier
+#define RAMI_RBIOCI 0x82 //requestByInputOutputCommonIdentifier
+#define RAMI_RFFDS 0x83 //requestFreezeFrameDataStructure
+//      RAMI_VMS 0x84 - 0xF9 vehicleManufacturerSpecific
+//      RAMI_SSS 0xFA - 0xFE systemSupplierSpecific
+//      RAMI_RBD 0xFF reservedByDocument
+
+//      LI_... 0x01 - 0xFE recordLocalIdentifier
+//      IOLI_... 0x01 - 0xFE inputOutputLocalIdentifier
+//      DTC_... 0x0000 This value is used in the readFreezeFramData positive 
+//                          response message to indicate that no freeze frame data is stored in server’s
+//      DTC_... 0x0001 - 0xFFFE This range of values identifies a record 
+//                                  which includes the data within a freeze frame referenced by a DTC
+//      DTC_... 0xFFFF This value is used in the readFreezeFramData positive response message
+//                          when recordAccessMethodIdentifer = requestFreezeFrameDataStructure to
+//                          indicate that the reported Freeze Frame Data structure table is used for all
+//                          DTCs in this server (ECU).
+//      CI_... 0001 - FFFE recordCommonIdentifier
+//      IOCI_... 0001 - FFFE inputOutputCommonIdentifier
+
+//      PIT_RBD 0x00 reservedByDocument
+//      PIT_RLI 0x01 recordLocalIdentifier “Definition of recordLocalIdentifier values”
+//      PIT_RCI 0x02 recordCommonIdentifier “Definition of recordCommonIdentifier values”
+//      PIT_RBD 0x03 - 0x80 reservedByDocument
+//      PIT_IOLI 0x81 inputOutputLocalIdentifier “Definition of inputOutputLocalIdentifier values”
+//      PIT_IOCI 0x82 inputOutputCommonIdentifier “Definition of inputOutputCommonIdentifier values”
+//      PIT_RBD 0x83 - 0xFF reservedByDocument
+
+
+//ClearDiagnosticInformation service
+#define SI_CDI 0x14 //clearDiagnosticInformation Request Service Id
+#define SI_CDIPR 0x54 //clearDiagnosticInformation Positive Response SId
+
+//InputOutput Control functional unit
+
+//InputOutputControlByLocalIdentifier service
+#define SI_IOCBLI 0x30 //inputOutputControlByLocalIdentifier Request SId
+#define SI_IOCBLIPR 0x70 //inputOutputControlByLocalIdentifier Positive Response SId
+
+//InputOutputControlByLocalIdentifier service
+//Parameter definition
+//      IOLI_RBD 0x00 reservedByDocument
+//      IOLI_... 0x01 - 0xF9 inputOutputLocalIdentifier
+//      IOLI_SSS 0xFA - 0xFE systemSupplierSpecific
+//      IOLI_RBD 0xFF reservedByDocument
+
+#define IOCP_RCTECU 0x00 //returnControlToECU
+#define IOCP_RCS 0x01 //reportCurrentState
+#define IOCP_RIOC 0x02 //reportIOConditions
+#define IOCP_RIOS 0x03 //reportIOScaling
+#define IOCP_RTD 0x04 //resetToDefault
+#define IOCP_FCS 0x05 //freezeCurrentState
+#define IOCP_ECO 0x06 //executeControlState
+#define IOCP_STA 0x07 //shortTermAdjustment
+#define IOCP_LTA 0x08 //longTermAdjustment
+#define IOCP_RIOCP 0x09 //reportIOCalibrationParameters
+//      IOCP_VMS 0x0A - 0xF9 vehicleManufacturerSpecific
+//      IOCP_SSS 0xFA - 0xFE systemSupplierSpecific
+//      IOCP_RBD 0xFF reservedByDocument
+
+//InputOutputControlByCommonIdentifier service
+#define SI_IOCBCID 0x2F //inputOutputControlByCommonIdentifier Request SId
+#define SI_IOCBCIDPR 0x6F //inputOutputControlByCommonIdentifier Positive Resp. SId
+
+//InputOutputControlByCommonIdentifier service
+//Parameter definition
+//      RBD 0x0000 reservedByDocument
+//      IOCI_ 0x0001 - 0xEFFF inputOutputCommonIdentifier
+//      SSS 0xF000 - 0xFFFE systemSupplierSpecific
+//      RBD 0xFFFF reservedByDocument
+
+//Remote Activation Of Routine functional unit
+
+//StartRoutineByLocalIdentifier service
 
 
 #endif /* KWP2K_DEFINE_H */
