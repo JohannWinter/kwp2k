@@ -441,6 +441,83 @@
 //Remote Activation Of Routine functional unit
 
 //StartRoutineByLocalIdentifier service
+#define SI_STRBLI 0x31 //startRoutineByLocalIdentifier Request Service Id
+#define SI_STRBLIPR 0x71 //startRoutineByLocalIdentifier Positive Response SId
+
+//StartRoutineByLocalIdentifier service
+//Parameter definition
+//      RBD 0x00 reservedByDocument
+//      RELI_... 0x01 - 0xF9 routineLocalIdentifier
+//      SSS 0xFA - 0xFE systemSupplierSpecific
+//      RBD 0xFF reservedByDocument
+
+//StartRoutineByAddress service
+#define SI_STRBA 0x38 //startRoutineByAddress Request Service Id
+#define SI_STRBAPR 0x78 //startRoutineByAddress Positive Response Service Id
+
+//StopRoutineByLocalIdentifier service
+#define SI_SPRBLI 0x32 //stopRoutineByLocalIdentifier Request Service Id
+#define SI_SPRBLIPR 0x72 //stopRoutineByLocalIdentifier Positive Response
+
+//StopRoutineByLocalIdentifier service
+//Parameter definition
+//      RETS_RBD 0x00 - 0x60 reservedByDocument
+#define RETS_NEWRA 0x61 //normalExitWithResultsAvailable
+#define RETS_NEWORA 0x62 //normalExitWithoutResultsAvailable
+#define RETS_AEWRA 0x63 //abnormalExitWithResultsAvailable
+#define RETS_AEWORA 0x64 //abnormalExitWithoutResultsAvailable
+//      RETS_RBD 0x65 - 0x7F reservedByDocument
+//      RETS_VMS 0x80 - 0xF9 vehicleManufacturerSpecific
+//      RETS_SSS 0xFA - 0xFE systemSupplierSpecific
+//      RETS_RBD 0xFF reservedByDocument
+
+//StopRoutineByAddress service
+#define SI_SPRBA 0x39 //stopRoutineByAddress Request Service Id
+#define SI_SPRBAPR 0x79 //stopRoutineByAddress Positive Response Service Id
+
+//RequestRoutineResultsByLocalIdentifier service
+#define SI_RRRBLI 0x33 //requestRoutineResultsByLocalIdentifier Request Service Id
+#define SI_RRRBLIPR 0x73 //requestRoutineResultsByLocalIdentifier Pos. Resp. Service Id
+
+
+//RequestRoutineResultsByAddress service
+#define SI_RRRBA 0x3A //requestRoutineResultsByAddress Request Service Id
+#define SI_RRRBA 0x7A //requestRoutineResultsByAddress Positive Response Service Id
+
+//Upload Download functional unit
+
+//RequestDownload service
+#define SI_RD 0x34 //requestDownload Request Service Id
+#define SI_RDPR 0x74 //requestDownload Positive Response Service Id
+
+//RequestDownload service
+// Parameter definition
+#define DFI_UCUE 0x00 //unCompressed unEncrypted
+//      DFI_UC 0x0X unCompressed
+//      DFI_C_... 0x1X - 0xFX Compression Methods
+//      DFI_UE 0xX0 unEncrypted
+//      DFI_E_... 0xX1 - XF Encrypting Methods
+
+//RequestUpload service
+#define SI_RU 0x35 //requestUpload Request Service Id
+#define SI_RUPR 0x75 //requestUpload Positive Response Service Id
+
+//RequestUpload service
+// Parameter definition
+#define DFI_UCUE 0x00 //unCompressed unEncrypted
+//      DFI_UC 0x0X unCompressed
+//      DFI_C_... 0x1X - 0xFX Compression Methods
+//      DFI_UE 0xX0 unEncrypted
+//      DFI_E_... 0xX1 - XF Encrypting Methods
+
+//TransferData service
+#define SI_TD 0x36 //transferData Request Service Id
+#define SI_TDPR 0x76 //transferData Positive Response Service Id
+
+//RequestTransferExit service
+#define SI_RTE 0x37 //requestTransferExit Request Service Id
+#define SI_RTEPR 0x77 //requestTransferExit Positive Response Service Id
+
 
 
 #endif /* KWP2K_DEFINE_H */
